@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Udemy training", "Udemy training\Udemy training.csproj", "{37B4D9C9-4440-4192-991D-587810E10407}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiUdemy", "WebApiUdemy\WebApiUdemy.csproj", "{2CCE3826-3273-4DC1-BEB5-17D7702E5AE1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{37B4D9C9-4440-4192-991D-587810E10407}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37B4D9C9-4440-4192-991D-587810E10407}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37B4D9C9-4440-4192-991D-587810E10407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CCE3826-3273-4DC1-BEB5-17D7702E5AE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CCE3826-3273-4DC1-BEB5-17D7702E5AE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CCE3826-3273-4DC1-BEB5-17D7702E5AE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CCE3826-3273-4DC1-BEB5-17D7702E5AE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
