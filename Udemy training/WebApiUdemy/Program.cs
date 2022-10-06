@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApiUdemy.Data;
+using WebApiUdemy.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddDbContext<NZWalksDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("NzWalks"));
 });
+
+builder.Services.AddScoped<IRegionRepository, RegionRepository>();
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 var app = builder.Build();
 

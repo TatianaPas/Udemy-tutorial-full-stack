@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "58xBqVZk3dyK86iN8HrYsjeBPAS34bJ58Cqxd8qla4nnr4gLNxI92S0s1VAer/eXGTdsZvNVaQzvttIvAVI66g==",
+  "dgSpecHash": "1q5lXf6WrPy2hTWVHXjaKzM8jLCDWA+9tygAowh2EJcpnOhlLoPgyCDMiXZNci6qeEk43lAGT+c5aLRgZMvsBQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\tatja\\OneDrive\\Desktop\\Udemy Full Stack\\Code\\Udemy-tutorial-full-stack\\Udemy training\\WebApiUdemy\\WebApiUdemy.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\tatja\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\tatja\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\tatja\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\tatja\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\tatja\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\tatja\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\tatja\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\tatja\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.9\\microsoft.entityframeworkcore.6.0.9.nupkg.sha512",
