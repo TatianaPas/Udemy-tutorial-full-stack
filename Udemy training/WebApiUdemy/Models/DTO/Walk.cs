@@ -1,4 +1,4 @@
-﻿namespace WebApiUdemy.Models.Domain
+﻿namespace WebApiUdemy.Models.DTO
 {
     public class Walk
     {
@@ -11,7 +11,6 @@
         //Navigation properties
 
         public Region Region { get; set; }
-        public WalkDifficulty WalkDifficulty { get; set; }
-
+       public WalkDifficulty WalkDifficulty { get; set; }
     }
 }
