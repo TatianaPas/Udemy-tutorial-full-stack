@@ -21,9 +21,9 @@ namespace WebApiUdemy.Controllers
         }
 
         [HttpGet]
-       public async Task<IActionResult> GetAllRegionsAsync()
+        public async Task<IActionResult> GetAllRegionsAsync()
         {
-           var regions = await regionRepository.GetAllAsync();
+            var regions = await regionRepository.GetAllAsync();
 
             //return DTO regions
             //var regionsDTO = new List<Models.DTO.Region>();
@@ -44,7 +44,7 @@ namespace WebApiUdemy.Controllers
             //    regionsDTO.Add(regionDTO);
             //});
 
-            var regionsDTO= mapper.Map<List<Models.DTO.Region>>(regions);
+            var regionsDTO = mapper.Map<List<Models.DTO.Region>>(regions);
 
             return Ok(regionsDTO);
         }
@@ -54,8 +54,8 @@ namespace WebApiUdemy.Controllers
         [ActionName("GetRegionAsync")]
         public async Task<IActionResult> GetRegionAsync(Guid id)
         {
-           var region = await regionRepository.GetAsync(id);
-            if(region== null)
+            var region = await regionRepository.GetAsync(id);
+            if (region == null)
             {
                 return NotFound();
             }
@@ -67,6 +67,13 @@ namespace WebApiUdemy.Controllers
         [HttpPost]
         public async Task<IActionResult> AddRegionAsync(AddRegionRequest addRegionRequest)
         {
+            //Validate the request
+
+            if(!ValidateAddRegionAsync(addRegionRequest))
+            {
+                return BadRequest(ModelState);
+            }
+
             //Request to Domain model
             var region = new Models.Domain.Region()
             {
@@ -87,7 +94,7 @@ namespace WebApiUdemy.Controllers
 
             var regionDTO = new Models.DTO.Region
             {
-                Id= region.Id,
+                Id = region.Id,
                 Code = region.Code,
                 Area = region.Area,
                 Lat = region.Lat,
@@ -96,45 +103,53 @@ namespace WebApiUdemy.Controllers
                 Population = region.Population
             };
 
-            return CreatedAtAction(nameof(GetRegionAsync), new {id=regionDTO.Id}, regionDTO);
+            return CreatedAtAction(nameof(GetRegionAsync), new { id = regionDTO.Id }, regionDTO);
 
         }
 
         [HttpDelete]
         [Route("{id:guid}")]
-        public async Task<IActionResult>DeleteRegionAsync(Guid id)
+        public async Task<IActionResult> DeleteRegionAsync(Guid id)
         {
             //Get region from database
             var deletedRegion = await regionRepository.DeleteAsync(id);
-            
+
             //if null notFound
-            if(deletedRegion == null)
+            if (deletedRegion == null)
             {
                 return NotFound();
             }
-          
+
 
             //Convert response back to DTO
 
-          var regionDTO = new Models.DTO.Region
-          {
-              Id = deletedRegion.Id,
-              Code = deletedRegion.Code,
-              Area = deletedRegion.Area,
-              Lat = deletedRegion.Lat,
-              Long = deletedRegion.Long,
-              Name = deletedRegion.Name,
-              Population = deletedRegion.Population
-          };
+            var regionDTO = new Models.DTO.Region
+            {
+                Id = deletedRegion.Id,
+                Code = deletedRegion.Code,
+                Area = deletedRegion.Area,
+                Lat = deletedRegion.Lat,
+                Long = deletedRegion.Long,
+                Name = deletedRegion.Name,
+                Population = deletedRegion.Population
+            };
             //return OK response
 
             return Ok(regionDTO);
 
         }
+
+
         [HttpPut]
         [Route("{id:guid}")]
-        public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id,[FromBody] UpdateRegionRequest updateRegionRequest)
+        public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id, [FromBody] UpdateRegionRequest updateRegionRequest)
         {
+            //Validate incoming request
+            if(!ValidateUpdateRegionAsync(updateRegionRequest))
+            {
+                return BadRequest(ModelState);
+            }
+
             //Convert DTO to Domain model
             var region = new Models.Domain.Region
             {
@@ -150,7 +165,7 @@ namespace WebApiUdemy.Controllers
 
             //if null, notFound
 
-            if(region == null)
+            if (region == null)
             {
                 return NotFound();
             }
@@ -173,5 +188,79 @@ namespace WebApiUdemy.Controllers
             return Ok(regionDTO);
         }
 
+
+        #region Private methods
+
+        private bool ValidateAddRegionAsync(AddRegionRequest addRegionRequest)
+        {
+
+            if(addRegionRequest==null)
+            {
+                ModelState.AddModelError(nameof(addRegionRequest), $"Please add region data");
+                return false;
+            }
+
+            if(string.IsNullOrWhiteSpace(addRegionRequest.Code))
+            {
+                ModelState.AddModelError(nameof(addRegionRequest.Code), $" please provide valid code");
+            }
+            if (string.IsNullOrWhiteSpace(addRegionRequest.Name))
+            {
+                ModelState.AddModelError(nameof(addRegionRequest.Name), $" please provide valid name");
+            }
+            if(addRegionRequest.Area<= 0)
+            {
+                ModelState.AddModelError(nameof(addRegionRequest.Area), $"{nameof(addRegionRequest.Area)} can not be less than 0");
+            }
+           
+            if (addRegionRequest.Population < 0)
+            {
+                ModelState.AddModelError(nameof(addRegionRequest.Population), $"{nameof(addRegionRequest.Population)} can not be less than 0");
+            }
+
+
+            if(ModelState.ErrorCount > 0)
+            {
+                return false;
+            }
+            return true;
+        }
+        
+        private bool ValidateUpdateRegionAsync(UpdateRegionRequest updateRegionRequest)
+        {
+            if (updateRegionRequest == null)
+            {
+                ModelState.AddModelError(nameof(updateRegionRequest), $"Please add region data");
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(updateRegionRequest.Code))
+            {
+                ModelState.AddModelError(nameof(updateRegionRequest.Code), $" please provide valid code");
+            }
+            if (string.IsNullOrWhiteSpace(updateRegionRequest.Name))
+            {
+                ModelState.AddModelError(nameof(updateRegionRequest.Name), $" please provide valid name");
+            }
+            if (updateRegionRequest.Area <= 0)
+            {
+                ModelState.AddModelError(nameof(updateRegionRequest.Area), $"{nameof(updateRegionRequest.Area)} can not be less than 0");
+            }
+           
+            if (updateRegionRequest.Population < 0)
+            {
+                ModelState.AddModelError(nameof(updateRegionRequest.Population), $"{nameof(updateRegionRequest.Population)} can not be less than 0");
+            }
+
+
+            if (ModelState.ErrorCount > 0)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+        #endregion
     }
 }
