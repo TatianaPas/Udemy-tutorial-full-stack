@@ -14,7 +14,7 @@ namespace WebApiUdemy.Repositories
         {
             this.configuration = configuration;
         }
-        public Task<string> CreatTokenAsync(User user)
+        public Task<string> CreatTokenAsync(UserNZ user)
         {
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]));
             //create claims

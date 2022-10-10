@@ -4,6 +4,6 @@ namespace WebApiUdemy.Repositories
 {
     public interface IUserRepository
     {
-        Task <User> AuthenticateAsync(string username, string password);
+        Task <UserNZ> AuthenticateAsync(string username, string password);
     }
 }

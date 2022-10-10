@@ -9,7 +9,7 @@ namespace WebApiUdemy.Controllers
 {
     [ApiController]
     [Route("Regions")]
-    [Authorize]
+   
     public class RegionsController : Controller
     {
         private readonly IRegionRepository regionRepository;
@@ -23,6 +23,7 @@ namespace WebApiUdemy.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "reader")]
         public async Task<IActionResult> GetAllRegionsAsync()
         {
             var regions = await regionRepository.GetAllAsync();
@@ -54,6 +55,7 @@ namespace WebApiUdemy.Controllers
         [HttpGet]
         [Route("{id:guid}")]
         [ActionName("GetRegionAsync")]
+        [Authorize(Roles = "reader")]
         public async Task<IActionResult> GetRegionAsync(Guid id)
         {
             var region = await regionRepository.GetAsync(id);
@@ -67,6 +69,7 @@ namespace WebApiUdemy.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> AddRegionAsync(AddRegionRequest addRegionRequest)
         {
             //Validate the request
@@ -114,6 +117,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> DeleteRegionAsync(Guid id)
         {
             //Get region from database
@@ -147,6 +151,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> UpdateRegionAsync([FromRoute] Guid id, [FromBody] UpdateRegionRequest updateRegionRequest)
         {
             //Validate incoming request

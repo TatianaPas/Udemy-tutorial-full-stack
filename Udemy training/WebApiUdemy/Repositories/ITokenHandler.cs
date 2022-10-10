@@ -4,6 +4,6 @@ namespace WebApiUdemy.Repositories
 {
     public interface ITokenHandler
     {
-        Task<string> CreatTokenAsync(User user);
+        Task<string> CreatTokenAsync(UserNZ user);
     }
 }

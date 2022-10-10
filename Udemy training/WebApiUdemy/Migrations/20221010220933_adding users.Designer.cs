@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApiUdemy.Data;
 
@@ -11,9 +12,10 @@ using WebApiUdemy.Data;
 namespace WebApiUdemy.Migrations
 {
     [DbContext(typeof(NZWalksDbContext))]
-    partial class NZWalksDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221010220933_adding users")]
+    partial class addingusers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,28 +70,7 @@ namespace WebApiUdemy.Migrations
                     b.ToTable("Roles");
                 });
 
-            modelBuilder.Entity("WebApiUdemy.Models.Domain.User_Role", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Users_Roles");
-                });
-
-            modelBuilder.Entity("WebApiUdemy.Models.Domain.UserNZ", b =>
+            modelBuilder.Entity("WebApiUdemy.Models.Domain.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,6 +99,27 @@ namespace WebApiUdemy.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("WebApiUdemy.Models.Domain.User_Role", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Users_Roles");
                 });
 
             modelBuilder.Entity("WebApiUdemy.Models.Domain.Walk", b =>
@@ -171,7 +173,7 @@ namespace WebApiUdemy.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("WebApiUdemy.Models.Domain.UserNZ", "User")
+                    b.HasOne("WebApiUdemy.Models.Domain.User", "User")
                         .WithMany("UserRoles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -211,7 +213,7 @@ namespace WebApiUdemy.Migrations
                     b.Navigation("UserRolse");
                 });
 
-            modelBuilder.Entity("WebApiUdemy.Models.Domain.UserNZ", b =>
+            modelBuilder.Entity("WebApiUdemy.Models.Domain.User", b =>
                 {
                     b.Navigation("UserRoles");
                 });

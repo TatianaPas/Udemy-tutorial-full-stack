@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApiUdemy.Models.DTO;
 using WebApiUdemy.Repositories;
@@ -37,6 +38,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
+        [Authorize(Roles = "reader")]
         public async Task<IActionResult> GetWalkAsync(Guid id)
         {
             var walk= await walkRepository.GetAsync(id);
@@ -51,6 +53,7 @@ namespace WebApiUdemy.Controllers
         [HttpPost]
         [Route("Walks")]
         [ActionName("AddWalkAsync")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> AddWalkAsync([FromBody] Models.DTO.AddWalkRequest addWalkRequest)
         {
 
@@ -96,6 +99,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> UpdateWalkAsync([FromRoute] Guid id, [FromBody] UpdateWalkRequest updateWalkRequest)
         {
             ///validate incoming request
@@ -141,6 +145,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpDelete]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> DeleteWalkAsync(Guid id)
         {
             var walkDomain= await walkRepository.DeleteAsync(id);

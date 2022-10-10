@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApiUdemy.Repositories;
 
@@ -31,6 +32,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpGet]
         [Route("{id:guid}")]
+        [Authorize(Roles = "reader")]
         public async Task<IActionResult> GetWalkDifficultyById(Guid id)
         {
             var walkDif = await walkDifficultyRepository.GetAsync(id);
@@ -52,6 +54,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpPost]
         [ActionName("AddWalkDifficulty")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> AddWalkDifficulty(Models.DTO.AddWalkDifficultyRequest addWalkDifficultyRequest)
         {
 
@@ -74,6 +77,7 @@ namespace WebApiUdemy.Controllers
 
         [HttpPut]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> UpdateWalkDif(Guid id,
             Models.DTO.UpdateWalkDifficultyReauest updateWalkDifficultyReauest)
         {
@@ -99,6 +103,7 @@ namespace WebApiUdemy.Controllers
         }
         [HttpDelete]
         [Route("{id:guid}")]
+        [Authorize(Roles = "writer")]
         public async Task<IActionResult> DeleteWalkDifficulty(Guid id)
         {
             var walkDifDomain = await walkDifficultyRepository.DeleteWalkDifficultyAsync(id);
