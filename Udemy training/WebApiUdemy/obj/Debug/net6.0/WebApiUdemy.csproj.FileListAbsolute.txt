@@ -61,3 +61,8 @@ C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\
 C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\AutoMapper.dll
 C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\tatja\OneDrive\Desktop\Udemy Full Stack\Code\Udemy-tutorial-full-stack\Udemy training\WebApiUdemy\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll

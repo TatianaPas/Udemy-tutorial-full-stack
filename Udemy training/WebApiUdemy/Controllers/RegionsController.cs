@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApiUdemy.Models.Domain;
 using WebApiUdemy.Models.DTO;
@@ -8,6 +9,7 @@ namespace WebApiUdemy.Controllers
 {
     [ApiController]
     [Route("Regions")]
+    [Authorize]
     public class RegionsController : Controller
     {
         private readonly IRegionRepository regionRepository;
@@ -69,10 +71,13 @@ namespace WebApiUdemy.Controllers
         {
             //Validate the request
 
-            if(!ValidateAddRegionAsync(addRegionRequest))
-            {
-                return BadRequest(ModelState);
-            }
+            //if(!ValidateAddRegionAsync(addRegionRequest))
+            //{
+            //    return BadRequest(ModelState);
+            //}
+
+
+
 
             //Request to Domain model
             var region = new Models.Domain.Region()
